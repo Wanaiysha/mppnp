@@ -5,7 +5,7 @@ I made this resource on 5/7/2024.
 
 First, make sure you have access and permission to NuGrid repositories.
 
-Download and install the stable version of Ubuntu 18.04. You do not want the latest Ubuntu because the MPPNP code will not work with the latest compiler. I did try to compile with Ubuntu 22.04, but it gave so many errors. Well, you could bypass this error by adding this "-fallow-argument-mismatch" to FFLAGS in the MuPPN/frames/mppnp/source/ARCH/<your ARCH>/Makefile. but it still did not work well for me. So I used Ubuntu 18.04 to avoid the headache.
+Download and install the stable version of Ubuntu 18.04. You do not want the latest Ubuntu because the MPPNP code will not work with the latest compiler. I did try to compile with Ubuntu 22.04, but it gave so many errors. Well, you could bypass this error by adding this "-fallow-argument-mismatch" to FFLAGS in the NuPPN/frames/mppnp/source/ARCH/<your ARCH>/Makefile. but it still did not work well for me. So I used Ubuntu 18.04 to avoid the headache.
 https://www.public-health.uiowa.edu/it/support/kb48549/
 
 2.Downgrade the compilers (gcc, g++, and gfortran) in Ubuntu 18.04. By default, Ubuntu 18.04 runs on gcc-7, but it still won't compile the MPPNP code. I tried using gcc-4.8, g++-4.8, and gfortran-4.8, and it works. (Ubuntu 22.04 does not support the old compilers.)
