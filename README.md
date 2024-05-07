@@ -102,7 +102,7 @@ ls *se.h5  > name_files.idx
    
 5. Important starts
  ```  
-   - cp run_template run_test
+   - cp -r run_template run_test
    - cd run_test ( Make sure you have have ppn_physics,ppn_solver,ppn_frames in the folder )
 ```  
    - Edit ppn_frame.Here some inputs I made with the SE files.You can refer to the definitions in the documentation to change them later based on your work.( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory.Also you want to check if NPDATA file exist in NuPPN/physics directory )
@@ -126,7 +126,7 @@ ls *se.h5  > name_files.idx
 
         code_source = 'MES' ! which stellar code was used ?
         !datdir = '../USEEPP'
-        datdir = '/home/wan/NuPPN/frames/mppnp/USEEPP/set1_update'
+        datdir = '/home/wan/NuPPN/frames/mppnp/USEEPP/set1_data'
         prefix = 'M3.00Z.0200'
 
         msl = 10000   ! maximum number of spatial zones
