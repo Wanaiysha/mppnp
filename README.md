@@ -116,7 +116,7 @@ ls *se.h5  > name_files.idx
         !sig_term_limit = 1d+10  ! upper limit for diffusion coefficients similar to that in MESA
 
         modstart = 1            ! start model for post-processing (check how many SE cycles you want to compute)
-        modstop  = 79000
+        modstop  = 4001         ! Assuming you try with my SE files input 
 
         igrid  = 2      ! set grid option
         dxm    = 1.d-2  ! grid size for static grid
