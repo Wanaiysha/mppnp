@@ -101,8 +101,8 @@ ls *se.h5  > name_files.idx
    
 5. Important starts
  ```  
-   - cp -r run_template run_test
-   - cd run_test ( Make sure you have have ppn_physics,ppn_solver,ppn_frames in the folder )
+ cp -r run_template run_test
+ cd run_test 
 ```  
    - Edit ppn_frame.Here some inputs I made with the SE files.You can refer to the definitions in the documentation to change them later based on your work.( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory.Also you want to check if NPDATA file exist in NuPPN/physics directory )
 ```
@@ -133,20 +133,21 @@ ls *se.h5  > name_files.idx
         gfdim = 20   ! max num of refinement species    
        ```
 Finally, in you run_test directory
- ```make distclean
+ ```
+make distclean
 make superclean
 make clean
 make blasclean
 make
- ```
+```
 This will create the mppnp.exe file. If you encounter other errors, particularly the "Error: Missing actual argument for argument time...", it's likely due to two lines in mppnp.F90 (line 724 and 1610). For now, I've only commented out these lines as I haven't yet figured out how to solve them yet. Another problem can be due to openblas was not set properly.So check your make debug. I did get help from Marco Pignatari lot!
 
 Now 
  ```
 mpirun -np 8 ./mppnp.exe
  ```
-If everthing works out. You will see 3 output SE files. You are good to go to install mppnp in the HPC cluster to run them much effieciently. Ask your IT to install openMPI into your work space.The rest would be the same.Use any jobscripts to send job to your HPC.
-*A bit of a reminder to myself.I used this for BLASLIB in Eddie HPC cluster BLASLIB=-L/lib64/libopenblas
+If everthing works out. You will see 3 output SE files. You are good to go to install mppnp in the HPC cluster to run them much effieciently. Ask your IT to install openMPI into your work space.The rest would be the same.Use any jobscripts to send job to your HPC./
+*A bit of a reminder to myself.I used this in Eddie HPC cluster, BLASLIB=-L/lib64/libopenblas then export OPENBLAS_NUM_THREADS=2 in the terminal to compile.This is because the setting limits the number processes that can be run by a user in Eddie cluster.
  ```
 ./jobs.ssh !replace with you job script
  ```
