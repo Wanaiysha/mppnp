@@ -150,8 +150,8 @@ If everthing works out. You will see 3 output SE files. You are good to go to in
 *A bit of a reminder to myself.I used this in Eddie HPC cluster, BLASLIB=-L/lib64/libopenblas then export OPENBLAS_NUM_THREADS=2 in the terminal to compile.This is because the setting limits the number processes that can be run by a user in Eddie cluster.
 ```
 qsub run_eddie.sh !This is for Eddie.Replace with your HPC command and job script
+qstat !To check your status
 ```
-
 
 
 
