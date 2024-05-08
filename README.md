@@ -145,7 +145,8 @@ Now
  ```
 mpirun -np 8 ./mppnp.exe
  ```
-If everthing works out. You will see 3 output SE files. You are good to go to install mppnp in the HPC cluster to run them much effieciently. Ask your IT to install openMPI into your work space.The rest would be the same.Use any jobscripts to send job to your HPC
+If everthing works out. You will see 3 output SE files. You are good to go to install mppnp in the HPC cluster to run them much effieciently. Ask your IT to install openMPI into your work space.The rest would be the same.Use any jobscripts to send job to your HPC.
+*A bit of a reminder to myself.I used this for BLASLIB in Eddie HPC cluster BLASLIB=-L/lib64/libopenblas
  ```
 ./jobs.ssh !replace with you job script
  ```
