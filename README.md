@@ -46,9 +46,6 @@ Dont forget to test :
 ```
 $opt/mpi/bin/ompi_info
 ```
-save this in your .bashrc to export your mpi.
-```export HDF5_MPI="ON"```
-
 
 4.Next download the previous release, HDF5-1.8.3 from here. I am not sure if you can try the latest version but I didn't.
 (https://support.hdfgroup.org/ftp/HDF5/prev-releases/hdf5-1.8/hdf5-1.8.3/src/)
@@ -65,12 +62,12 @@ $make install
 Next, we need to git clone NuPPN from the NuGrid GitHub. However, currently, GitHub requires your token to access git clone from the terminal instead of using your password.
 
 Go to your GitHub settings:
-Developer settings
-Personal access tokens
-Access classic
-Generate a new token.
-Do not download manually from the source because some git clone repositories are hardwired in the NuPPN.git (NuSE).
-Save that token as your password. Now, whenever you want to git clone anything, use this token instead
+-Developer settings
+-Personal access tokens
+-Access classic
+-Generate a new token.
+-Do not download manually from the source because some git clone repositories are hardwired in the NuPPN.git (NuSE).
+-Save that token as your password. Now, whenever you want to git clone anything, use this token instead
 ```
 $git clone https://github.com/NuGrid/NuPPN.git) --branch modular2 --single-branch
 ```
@@ -79,6 +76,8 @@ Username: your username
 Password : your token
 
 Once you have NuPPN in your home directory, there are a few things that need to be modified.
+save this in your .bashrc to export your mpi.
+```export HDF5_MPI="ON"```
 
 Please edit the NuPPN/frames/mppnp/source/makefile. Add the last line in the configuration of the SE with your path to HDF5 like this:
 ```$(SE_PATH)/build/lib/libse.so:
