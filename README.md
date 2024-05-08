@@ -131,7 +131,8 @@ ls *se.h5  > name_files.idx
         msl = 10000   ! maximum number of spatial zones
         nrefmax = 23 ! refinement level
         gfdim = 20   ! max num of refinement species    
-       ```
+```
+
 Finally, in you run_test directory
 ```
 make distclean
@@ -149,7 +150,7 @@ If everthing works out. You will see 3 output SE files. You are good to go to in
 *A bit of a reminder to myself.I used this in Eddie HPC cluster, BLASLIB=-L/lib64/libopenblas then export OPENBLAS_NUM_THREADS=2 in the terminal to compile.This is because the setting limits the number processes that can be run by a user in Eddie cluster.
 ```
 ./jobs.ssh !replace with you job script
- ```
+```
 
 
 
