@@ -143,10 +143,10 @@ make
 ```
 This will create the mppnp.exe file. If you encounter other errors, particularly the "Error: Missing actual argument for argument time...", it's likely due to two lines in mppnp.F90 (line 724 and 1610). For now, I've only commented out these lines as I haven't yet figured out how to solve them yet. Another problem can be due to openblas was not set properly.So check your make debug. I did get help from Marco Pignatari a lot!
 
-**UPDATE** It seems that mppnp.F90 called a subroutine from physics/solver.F90 which doesnt match with the 'time' argument. So I replaced the solver.f90 using the solver.f90 file from modular-2-HIF (From NuPPN -branch) which almost identical except the 'time' dependencies, and finally the code works.  
+**UPDATE** It seems that mppnp.F90 called a subroutine from solver/solver.F90 which doesnt match with the 'time' argument. So I replaced the solver.f90 using the solver.f90 file from modular-2-HIF (From NuPPN -branch) which almost identical except the 'time' dependencies, and finally the code works.  
 Now 
  ```
-mpirun -np 8 ./mppnp.exe
+mpirun -np 16 ./mppnp.exe
  ```
 If everthing works out. You will see 3 output SE files. You are good to go to install mppnp in the HPC cluster to run them much effieciently. Ask your IT to install openMPI into your work space.The rest would be the same.Use any jobscripts to send job to your HPC.
 *A bit of a reminder to myself.I used this in Eddie HPC cluster, BLASLIB=-L/lib64/libopenblas then export OPENBLAS_NUM_THREADS=2 in the terminal to compile.This is because the setting limits the number processes that can be run by a user in Eddie cluster.
