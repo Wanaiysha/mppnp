@@ -143,7 +143,7 @@ make
 ```
 This will create the mppnp.exe file. If you encounter other errors, particularly the "Error: Missing actual argument for argument time...", it's likely due to two lines in mppnp.F90 (line 724 and 1610). For now, I've only commented out these lines as I haven't yet figured out how to solve them yet. Another problem can be due to openblas was not set properly.So check your make debug. I did get help from Marco Pignatari a lot!
 
-**UPDATE** It seems that mppnp.F90 called a subroutine from physics/solver.F90 which doesnt match with the variables 'time'. So I replaced the solver.f90 using solver.f90 from modular-2-HIF (From NUGRIG repo) which almost identical except the 'time' dependencies, and finally the code works.  
+**UPDATE** It seems that mppnp.F90 called a subroutine from physics/solver.F90 which doesnt match with the 'time' argument. So I replaced the solver.f90 using the solver.f90 file from modular-2-HIF (From NuPPN -branch) which almost identical except the 'time' dependencies, and finally the code works.  
 Now 
  ```
 mpirun -np 8 ./mppnp.exe
