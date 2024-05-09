@@ -86,7 +86,7 @@ git clone git@github.com:NuGrid/NuSE.git $(SE_PATH)
 mkdir $(SE_PATH)/SE/build
 cd $(SE_PATH)/SE; ./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5; sudo make; sudo make install
 ```
-Note: If you encountered problem installing the NUSE by the default makefile, I suggest to install it manually from Nugrid-NuSE into your home directory.Set the SE_PATH in the makefile to read your SE too.
+Note: If you enc0ountered problem installing the NUSE by the default makefile, I suggest to install it manually from Nugrid-NuSE into your home directory.Set the SE_PATH in the makefile to read your SE too.
 
 2. Prepare your Make.local following the tutorial from here https://www.youtube.com/watch?v=9MAWjzhP3_M 
 
@@ -141,7 +141,8 @@ make clean
 make blasclean
 make
 ```
-This will create the mppnp.exe file. If you encounter other errors, particularly the "Error: Missing actual argument for argument time...", it's likely due to two lines in mppnp.F90 (line 724 and 1610). For now, I've only commented out these lines as I haven't yet figured out how to solve them yet. Another problem can be due to openblas was not set properly.So check your make debug. I did get help from Marco Pignatari lot!
+This will create the mppnp.exe file. If you encounter other errors, particularly the "Error: Missing actual argument for argument time...", it's likely due to two lines in mppnp.F90 (line 724 and 1610). For now, I've only commented out these lines as I haven't yet figured out how to solve them yet. Another problem can be due to openblas was not set properly.So check your make debug. I did get help from Marco Pignatari a lot!
+**UPDATE** It seems that mppnp.90 called a subsroutine from solver.f90 which doesnt match with variables 'time'. So I replaced the solver.f90 using solver.f90 from modular-2-HIF (From NUGRIG repo) which seems matching.  
 Now 
  ```
 mpirun -np 8 ./mppnp.exe
