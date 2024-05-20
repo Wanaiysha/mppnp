@@ -91,7 +91,7 @@ Note: If you enc0ountered problem installing the NUSE by the default makefile, I
 2. Prepare your Make.local following the tutorial from here https://www.youtube.com/watch?v=9MAWjzhP3_M 
 
    The only thing I did differently was to assign
-   ```BLASLIB = -lopenblas``` (you may need to sudo apt install blas first.Check where is you lopenblas is!)
+   ```BLASLIB = -lopenblas``` (you may need to sudo apt install blas first.Check where is you lopenblas is!else install blas, ```sudo apt install libopenblas-dev```)
 4.Make sure you have input files ready for testing. You can download my SE files to try https://drive.google.com/drive/folders/1pBOQO-9fIPi4TcpX3J5_wxXuYb1T3mcq?usp=sharing . Save these files in the USEEPP directory.
 
 These input files can be obtained from archives or evolution codes like MESA or GENEVA. Simply use NuGrid SE tools to convert LOG history data into SE files. You'll need to manually create the index file on your own. Use command below to generate the .index file:
