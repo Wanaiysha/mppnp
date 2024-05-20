@@ -12,8 +12,8 @@ https://www.public-health.uiowa.edu/it/support/kb48549/
 
 To change the compiler in Ubuntu, follow these steps:
 ```
-$sudo apt-get install gcc-4.8.5 g++-4.8.5
-$sudo apt-get install gfortran-4.8
+$sudo apt install gcc-4.8.5 g++-4.8.5
+$sudo apt install gfortran-4.8
 $sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60
 $sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 70
 $sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-4.8 100
