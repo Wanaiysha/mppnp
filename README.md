@@ -40,7 +40,7 @@ $tar xf openmpi-5.0.3.tar.bz2
 $cd openmpi-5.0.3
 $./configure --prefix=/opt/mpi 2>&1 | tee config.out
 $ make -j 8 all 2>&1 | tee make.out
-$ make install 2>&1 | tee install.out
+$ sudo make install 2>&1 | tee install.out
 ```
 Dont forget to test :
 ```
@@ -57,7 +57,7 @@ $cd hdf5-1.8.3.tar.bz2
 $./configure --prefix=/opt/hdf5
 $make 
 $make check 
-$make install
+$sudo make install
 ```
 Next, we need to git clone NuPPN from the NuGrid GitHub. However, currently, GitHub requires your token to access git clone from the terminal instead of using your password.
 
@@ -86,7 +86,7 @@ git clone git@github.com:NuGrid/NuSE.git $(SE_PATH)
 mkdir $(SE_PATH)/SE/build
 cd $(SE_PATH)/SE; ./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5; sudo make; sudo make install
 ```
-Note: If you enc0ountered problem installing the NUSE by the default makefile, I suggest to install it manually from Nugrid-NuSE into your home directory.Set the SE_PATH in the makefile to read your SE too.
+Note: If you enc0ountered problem installing the NUSE by the default makefile, I suggest to install it manually from Nugrid-NuSE into your home directory.Set the SE_PATH in the makefile to read your SE too.Personally, I would suggest to build in the SE separately.
 
 2. Prepare your Make.local following the tutorial from here https://www.youtube.com/watch?v=9MAWjzhP3_M 
 
