@@ -40,6 +40,7 @@ $tar xf openmpi-5.0.3.tar.bz2
 $cd openmpi-5.0.3
 $./configure --prefix=/opt/mpi 2>&1 | tee config.out
 *incase of any missing libraries : sudo apt install libevent-dev and sudo apt install libhwloc=dev
+*sudo apt install build-essential
 $ make -j 8 all 2>&1 | tee make.out
 $ sudo make install 2>&1 | tee install.out
 ```
