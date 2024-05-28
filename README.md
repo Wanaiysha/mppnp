@@ -39,6 +39,7 @@ $mkdir /opt/mpi
 $tar xf openmpi-5.0.3.tar.bz2
 $cd openmpi-5.0.3
 $./configure --prefix=/opt/mpi 2>&1 | tee config.out
+*incase of any missing libraries : sudo apt install libevent-dev and sudo apt install libhwloc=dev
 $ make -j 8 all 2>&1 | tee make.out
 $ sudo make install 2>&1 | tee install.out
 ```
@@ -52,7 +53,7 @@ $opt/mpi/bin/ompi_info
 Similarly,
 ```
 $mkdir /opt/hdf5
-$tar -xvzf hdf5-1.8.3.tar.bz2
+$tar -xvzf hdf5-1.8.3.tar.bz2cdcd .
 $cd hdf5-1.8.3.tar.bz2
 $./configure --prefix=/opt/hdf5
 $make 
@@ -143,7 +144,7 @@ make
 ```
 This will create the mppnp.exe file. If you encounter other errors, particularly the "Error: Missing actual argument for argument time...", it's likely due to two lines in mppnp.F90 (line 724 and 1610). For now, I've only commented out these lines as I haven't yet figured out how to solve them yet. Another problem can be due to openblas was not set properly.So check your make debug. I did get help from Marco Pignatari a lot!
 
-**UPDATE** It seems that mppnp.F90 called a subroutine from solver/solver.F90 which doesnt match with the 'time' argument. So I replaced the solver.f90 using the solver.f90 file from modular-2-HIF (From NuPPN -branch) which almost identical except the 'time' dependencies, and finally the code works.  
+**UPDATE** It seems that mppnp.F90 called a subroutine from solver/solver.F90 and decay.F90 which doesnt match with the 'time' argument. So I replaced the solver.f90 using the solver.f90 file from modular-2-HIF (From NuPPN -branch) which almost identical except the 'time' dependencies, and finally the code works. I shared the files to replace.
 Now 
  ```
 mpirun -np 16 ./mppnp.exe
