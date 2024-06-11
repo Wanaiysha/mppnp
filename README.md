@@ -39,7 +39,7 @@ $mkdir /opt/mpi
 $tar xf openmpi-5.0.3.tar.bz2
 $cd openmpi-5.0.3
 $./configure --prefix=/opt/mpi 2>&1 | tee config.out
-*incase of any missing libraries : sudo apt install libevent-dev and sudo apt install libhwloc=dev
+*incase of any missing libraries : sudo apt install libevent-dev libhwloc=dev
 *sudo apt install build-essential
 $ make -j 8 all 2>&1 | tee make.out
 $ sudo make install 2>&1 | tee install.out
@@ -84,7 +84,7 @@ save this in your .bashrc to export your mpi.Replaced the path for your installe
 Please edit the NuPPN/frames/mppnp/source/makefile. Add the last line in the configuration of the SE with your path to HDF5 like this:
 ```$(SE_PATH)/build/lib/libse.so:
 rm -rf $(SE_PATH)
-git clone git@github.com:NuGrid/NuSE.git $(SE_PATH)
+git clone https://github.com/NuGrid/NuSE.git $(SE_PATH)
 mkdir $(SE_PATH)/SE/build
 cd $(SE_PATH)/SE; ./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5; sudo make; sudo make install
 ```
