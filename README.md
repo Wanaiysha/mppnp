@@ -177,13 +177,13 @@ qsub run_eddie.sh !This is for Eddie.Replace with your HPC command and job scrip
 # Initialise the environment modules
 . /etc/profile.d/modules.sh
 
-# load modules
+# load modules,please load the module
 #module load /exports/applications/modulefiles/SL7/Libraries/openmpi/1.10.1
 #module load /exports/applications/modulefiles/SL7/Compilers/openmpi/1.10.1
 module load intel
 
 # Run the program
-mpiexec -np 64 ../CODE/mppnp.exe
+mpiexec -np 64 /exports/csce/eddie/ph/groups/np/Aisha/NuPPN/frames/mppnp/source/mppnp.exe
 ```
 
 ```
