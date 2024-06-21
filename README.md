@@ -79,7 +79,7 @@ Password : your token
 
 Once you have NuPPN in your home directory, there are a few things that need to be modified.
 save this in your .bashrc to export your mpi.Replaced the path for your installed mpi
-```export PATH=$PATH:/home/wan18/mpi/bin```
+```export PATH=$PATH:/opt/mpi/bin```
 
 Please edit the NuPPN/frames/mppnp/source/makefile. Add the last line in the configuration of the SE with your path to HDF5 like this:
 ```$(SE_PATH)/build/lib/libse.so:
