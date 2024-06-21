@@ -117,18 +117,18 @@ ls *se.h5  > name_files.idx
         !sig_term_limit = 1d+10  ! upper limit for diffusion coefficients similar to that in MESA
 
         modstart = 1            ! start model for post-processing (check how many SE cycles you want to compute)
-        modstop  = 4001         ! Assuming you try with my SE files input 
+        modstop  = 2000         ! Assuming you try with my SE files input 
 
         igrid  = 2      ! set grid option
         dxm    = 1.d-2  ! grid size for static grid
 
         xmrmin = 0.     ! min mass coordinate for pp
-        xmrmax = 3.0    ! max mass coordinate
+        xmrmax = 30.0    ! max mass coordinate
 
         code_source = 'MES' ! which stellar code was used ?
         !datdir = '../USEEPP'
-        datdir = '/home/wan/NuPPN/frames/mppnp/USEEPP/set1_data'
-        prefix = 'M3.00Z.0200'
+        datdir = '/home/wan/NuPPN/frames/mppnp/USEEPP/HDF5_mm30'
+        prefix = 'M30.00000Z0.014'
 
         msl = 10000   ! maximum number of spatial zones
         nrefmax = 23 ! refinement level
