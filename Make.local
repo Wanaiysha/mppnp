@@ -1,0 +1,26 @@
+LOCAL =eddie3
+
+#Architecture
+ARCH = Linux_x86_64_gfortran
+
+# make sure PHYSICS and SOLVER are absolute path names, for example
+# specify the location of a full svn tree if you have one, like this:
+#PPN = /home/s1785107/NuPPN
+PPN =/exports/csce/eddie/ph/groups/np-nucleo/Umberto/NuPPN
+
+# you don't need to change the following two but you can
+PHYSICS = $(PPN)/physics
+SOLVER = $(PPN)/solver
+UTILS = $(PPN)/utils
+
+# where is the se library?
+#SEHOME = /home/s1785107/mppnp/opt/se-1.2_gfortran
+SEHOME = /exports/csce/eddie/ph/groups/np-nucleo/Aisha/NuSE/build
+#SEHOME = /exports/csce/eddie/ph/groups/NuclearPhysics/Ashley/mppnp-intel/opt/se-1.2
+
+# where is mpi?
+#MPIHOME = /exports/applications/modulefiles/SL7/Compilers/openmpi/1.10.0
+MPIHOME = /exports/applications/modulefiles/SL7/Compilers/intel/2017u4
+
+USE_SUPERLU = YES
+BLASLIB = -L/lib64/libblas.a -lblas
