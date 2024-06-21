@@ -160,7 +160,7 @@ qsub run_eddie.sh !This is for Eddie.Replace with your HPC command and job scrip
 #run_eddie.sh lines
 #!/bin/sh
 #Grid Engine options (lines prefixed with #$)
-#$ -N m3z2m2
+#$ -N MPPMP_test
 #$ -cwd
 #$ -l h_rt=23:00:00
 #$ -l h_vmem=2G
