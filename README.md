@@ -154,7 +154,41 @@ If everthing works out. You will see 3 output SE files. You are good to go to in
 *A bit of a reminder to myself.I used this in Eddie HPC cluster, BLASLIB=-L/lib64/libopenblas then export OPENBLAS_NUM_THREADS=2 in the terminal to compile.This is because the setting limits the number processes that can be run by a user in Eddie cluster.
 ```
 qsub run_eddie.sh !This is for Eddie.Replace with your HPC command and job script
+```
+
+```
+#run_eddie.sh lines
+#!/bin/sh
+#Grid Engine options (lines prefixed with #$)
+#$ -N m3z2m2
+#$ -cwd
+#$ -l h_rt=23:00:00
+#$ -l h_vmem=2G
+#$ -pe mpi 64
+#$ -R y
+# These options are:
+#  job name: -N
+#  use the current working directory: -cwd
+#  runtime limit: -l h_rt
+#  memory limit: -l h_vmem
+#  number of cores to use: -pe mpi
+#  Resource Reservation: -R y
+
+# Initialise the environment modules
+. /etc/profile.d/modules.sh
+
+# load modules
+#module load /exports/applications/modulefiles/SL7/Libraries/openmpi/1.10.1
+#module load /exports/applications/modulefiles/SL7/Compilers/openmpi/1.10.1
+module load intel
+
+# Run the program
+mpiexec -np 64 ../CODE/mppnp.exe
+```
+
+```
 qstat !To check your status
+qstat -u '*' !All jobs
 ```
 
 
