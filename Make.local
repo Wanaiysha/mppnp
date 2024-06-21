@@ -6,7 +6,7 @@ ARCH = Linux_x86_64_gfortran
 # make sure PHYSICS and SOLVER are absolute path names, for example
 # specify the location of a full svn tree if you have one, like this:
 #PPN = /home/s1785107/NuPPN
-PPN =/exports/csce/eddie/ph/groups/np-nucleo/Umberto/NuPPN
+PPN =/exports/csce/eddie/ph/groups/np-nucleo/Aisha/NuPPN
 
 # you don't need to change the following two but you can
 PHYSICS = $(PPN)/physics
