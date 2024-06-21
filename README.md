@@ -71,7 +71,7 @@ Go to your GitHub settings:
 -Do not download manually from the source because some git clone repositories are hardwired in the NuPPN.git (NuSE).
 -Save that token as your password. Now, whenever you want to git clone anything, use this token instead
 ```
-$git clone https://github.com/NuGrid/NuPPN.git) --branch modular2 --single-branch
+$git clone https://github.com/NuGrid/NuPPN.git --branch modular2 --single-branch
 ```
 
 Username: your username
