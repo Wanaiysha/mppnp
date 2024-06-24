@@ -1,4 +1,4 @@
-6# MPPNP-modular2 - INSTALLATION
+MPPNP-modular2 - INSTALLATION
 Installing MPPNP into your personal computer can be quite tricky due to the many dependencies that need to be set. The way I provide this instruction is to remind myself and help people step by step.
 
 I made this resource on 5/7/2024.
