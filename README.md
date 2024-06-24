@@ -1,4 +1,4 @@
-# MPPNP-modular2 - INSTALLATION
+6# MPPNP-modular2 - INSTALLATION
 Installing MPPNP into your personal computer can be quite tricky due to the many dependencies that need to be set. The way I provide this instruction is to remind myself and help people step by step.
 
 I made this resource on 5/7/2024.
@@ -54,8 +54,8 @@ $opt/mpi/bin/ompi_info
 Similarly,
 ```
 $mkdir /opt/hdf5
-$tar -xvzf hdf5-1.8.3.tar.bz2cdcd .
-$cd hdf5-1.8.3.tar.bz2
+$tar -xvzf hdf5-1.8.3.tar.bz2
+$cd hdf5-1.8.3
 $./configure --prefix=/opt/hdf5
 $make 
 $make check 
