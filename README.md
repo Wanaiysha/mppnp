@@ -1,38 +1,7 @@
 MPPNP-modular2 - INSTALLATION
-Installing MPPNP into your personal computer can be quite tricky due to the many dependencies that need to be set. The way I provide this instruction is to remind myself and help people step by step.
 
-I made this resource on 5/7/2024.
 
-First, make sure you have access and permission to NuGrid repositories.
-
-Download and install the stable version of Ubuntu 18.04. You do not want the latest Ubuntu because the MPPNP code will not work with the latest compiler. I did try to compile with Ubuntu 22.04, but it gave so many errors. Well, you could bypass this error by adding this "-fallow-argument-mismatch" to FFLAGS in the NuPPN/frames/mppnp/source/ARCH/<your ARCH>/Makefile. but it still did not work well for me. So I used Ubuntu 18.04 to avoid the headache.
-https://www.public-health.uiowa.edu/it/support/kb48549/
-
-2.Downgrade the compilers (gcc, g++, and gfortran) in Ubuntu 18.04. By default, Ubuntu 18.04 runs on gcc-7, but it still won't compile the MPPNP code. I tried using gcc-4.8, g++-4.8, and gfortran-4.8, and it works. (Ubuntu 22.04 does not support the old compilers.)
-
-To change the compiler in Ubuntu, follow these steps:
-```
-$sudo apt install gcc-4.8.5 g++-4.8.5
-$sudo apt install gfortran-4.8
-$sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60
-$sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 70
-$sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-4.8 100
-```
-configure and choose your compiler.You may choose your compilers version here:
-```
-$sudo update-alternatives --config gcc 
-$sudo update-alternatives --config g++
-$sudo update-alternatives --config gfortran
-```
-
-Test: All must run with the same version
-```
-$gcc --version
-$g++ --version
-$gfortran --version
-```
-
-3.If all okay, then lets install OpenMPI from website.Follow the instruction and test your mpi.I installed openmpi-5.0.3 version in my /opt directory.
+1.Lets install OpenMPI from website.Follow the instruction and test your mpi.I installed openmpi-5.0.3 version in my /opt directory.
 Installed tar file from https://docs.open-mpi.org/en/v5.0.x/installing-open-mpi/quickstart.html
 ```
 $mkdir /opt/mpi
@@ -49,7 +18,7 @@ Dont forget to test :
 $opt/mpi/bin/ompi_info
 ```
 
-4.Next download the previous release, HDF5-1.8.3 from here. I am not sure if you can try the latest version but I didn't.
+2.Next download the previous release, HDF5-1.8.3 from here. I am not sure if you can try the latest version but I didn't.
 (https://support.hdfgroup.org/ftp/HDF5/prev-releases/hdf5-1.8/hdf5-1.8.3/src/)
 Similarly,
 ```
@@ -63,8 +32,8 @@ $sudo make install
 ```
 Next, we need to git clone NuPPN from the NuGrid Gitlab. However, currently, Gitlab requires your token to access git clone from the terminal instead of using your password.
 
-1. Add ssh key to you gitlab account.
-2. Go to your Gitlab settings:
+a. Add ssh key to you gitlab account.
+b. Go to your Gitlab settings:
 -Developer settings
 -Personal access tokens
 -Access classic
@@ -91,7 +60,7 @@ cd $(SE_PATH)/SE; ./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-h
 ```
 Note: If you enc0ountered problem installing the NUSE by the default makefile, I suggest to install it manually from Nugrid-NuSE into your home directory.Set the SE_PATH in the makefile to read your SE too.Personally, I would suggest to build in the SE separately.
 
-2. Prepare your Make.local following the tutorial from here https://www.youtube.com/watch?v=9MAWjzhP3_M 
+3. Prepare your Make.local following the tutorial from here https://www.youtube.com/watch?v=9MAWjzhP3_M 
 
    The only thing I did differently was to assign
    ```BLASLIB = -lopenblas``` (you may need to sudo apt install blas first.Check where is you lopenblas is!else install blas, ```sudo apt install libopenblas-dev```)
@@ -131,9 +100,10 @@ ls *se.h5  > name_files.idx
         datdir = '/home/wan/NuPPN/frames/mppnp/USEEPP/HDF5_mm30'
         prefix = 'M30.00000Z0.014'
 
-        msl = 10000   ! maximum number of spatial zones
+        msl = 5000   ! maximum number of spatial zones
         nrefmax = 23 ! refinement level
-        gfdim = 20   ! max num of refinement species    
+        gfdim = 20   ! max num of refinement species
+
 ```
 
 Finally, in you run_test directory
