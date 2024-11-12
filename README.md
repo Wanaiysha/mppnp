@@ -33,14 +33,10 @@ $sudo make install
 Next, we need to git clone NuPPN from the NuGrid Gitlab. However, currently, Gitlab requires your token to access git clone from the terminal instead of using your password.
 
 a. Add ssh key to you gitlab account.
-
-b. Go to your Gitlab settings:
+b. Then in your terminal,
 ```
 $git clone https://gitlab.ppmstar.org/NuGrid/nuppn.git --branch modular2 --single-branch
 ```
-
-Username: your username
-Password : your token/Password
 
 Once you have NuPPN in your home directory, there are a few things that need to be modified.
 save this in your .bashrc to export your mpi.Replaced the path for your installed mpi
