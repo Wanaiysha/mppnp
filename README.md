@@ -32,6 +32,7 @@ $sudo make install
 ```
 
 Additional info from Joshua Issa: He encountered installation issues and found a solution. I've added it here in case others experience similar problems
+
 **hdf5 step issues**
  - this might have a problem with the configure step if the architecture of your machine is not recognized because the config.guess and config.sub files may be out of date (welcome to the future!). You'll have to update config.guess and config.sub, and these specific ones worked for me with aarch64
 >`wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess -O bin/config.guess`
