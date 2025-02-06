@@ -65,21 +65,21 @@ Once you have NuPPN in your home directory, there are a few things that need to 
 save this in your .bashrc to export your mpi.Replaced the path for your installed mpi
 ```export PATH=$PATH:/opt/mpi/bin```
 
-Please edit the NuPPN/frames/mppnp/source/makefile. Add the last line in the configuration of the SE with your path to HDF5 like this. The reason is, we want SE is build with the same hdf5 version with the mppnp. Conflicts would occur if you have several hdf5 versions in your global paths:
+Please edit the NuPPN/frames/mppnp/source/makefile. Add the last line in the configuration of the SE with your path to HDF5 like this. The reason is that we want SE to be built with the same hdf5 version as the mppnp. Conflicts would occur if you have several hdf5 versions in your global paths:
 ```$(SE_PATH)/build/lib/libse.so:
 rm -rf $(SE_PATH)
 git clone https://github.com/NuGrid/NuSE.git $(SE_PATH)
 mkdir $(SE_PATH)/SE/build
 cd $(SE_PATH)/SE; ./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5; sudo make; sudo make install
 ```
-Note: If you enc0ountered problem installing the NUSE by the default makefile (which I did), I suggest to install it manually from Nugrid-NuSE into your home directory.
+Note: If you encounter problems installing the NUSE using the default makefile (which I did), I suggest installing it manually from Nugrid-NuSE into your home directory. If you change the location for the SE files, set the SE_PATH in the makefile to read your SE, too.
 ```
 $git clone https://github.com/NuGrid/NuSE.git
 $./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5
 $sudo make
 $sudo make install
 ```
-Set the SE_PATH in the makefile to read your SE too.Personally, I would suggest to build in the SE separately.
+
 
 3. Prepare your Make.local following the tutorial from here https://www.youtube.com/watch?v=9MAWjzhP3_M 
 
@@ -87,7 +87,7 @@ Set the SE_PATH in the makefile to read your SE too.Personally, I would suggest 
    ```BLASLIB = -lopenblas``` (you may need to sudo apt install blas first.Check where is you lopenblas is!else install blas, ```sudo apt install libopenblas-dev```)
 4.Make sure you have input files ready for testing. You can download my SE files to try https://drive.google.com/drive/folders/1pBOQO-9fIPi4TcpX3J5_wxXuYb1T3mcq?usp=sharing . Save these files in the USEEPP directory.
 
-These input files can be obtained from archives or evolution codes like MESA or GENEVA. Simply use NuGrid SE tools to convert LOG history data into SE files. You'll need to manually create the index file on your own. Use command below to generate the .index file:
+These input files can be obtained from archives or evolution codes like MESA or GENEVA. Simply use NuGrid SE tools to convert LOG history data into SE files. You'll need to manually create the index file on your own. Use the command below to generate the .index file:
 ```
 ls *se.h5  > name_files.idx
 ```
@@ -97,7 +97,7 @@ ls *se.h5  > name_files.idx
  cp -r run_template run_test
  cd run_test 
 ```  
-   - Edit ppn_frame.Here some inputs I made with the SE files.You can refer to the definitions in the documentation to change them later based on your work.( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory.Also you want to check if NPDATA file exist in NuPPN/physics directory )
+   - Edit ppn_frame. Here are some inputs I made with the SE files.You can refer to the definitions in the documentation and change them later based on your work. ( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory.Also you want to check if NPDATA file exist in NuPPN/physics directory )
 ```
 &ppn_frame
 	iabuini = 11    ! initialisation
