@@ -46,7 +46,8 @@ se step issues
 
 - you want to do make install and then make check in that order
 
-3. Next, we need to git clone NuPPN from the NuGrid Gitlab. However, currently, Gitlab requires your token to access git clone from the terminal instead of using your password.
+
+3.Next, we need to git clone NuPPN from the NuGrid Gitlab. However, currently, Gitlab requires your token to access git clone from the terminal instead of using your password.
 
 a. Add ssh key to you gitlab account.
 b. Then in your terminal,
