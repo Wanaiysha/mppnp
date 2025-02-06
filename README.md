@@ -35,19 +35,18 @@ Additional info from Joshua Issa: He encountered installation issues and found a
 
 **hdf5 step issues**
  - this might have a problem with the configure step if the architecture of your machine is not recognized because the config.guess and config.sub files may be out of date (welcome to the future!). You'll have to update config.guess and config.sub, and these specific ones worked for me with aarch64
-``wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess -O bin/config.guess``
-``wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub -O bin/config.sub``
-
+```wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess -O bin/config.guess```
+```wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub -O bin/config.sub```
 - you want to do make install and then make check in that order
 
 se step issues
 - you might run into the same problem as the hdf5 step
-``wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess -O build-aux/config.guess``
-``wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub -O build-aux/config.sub``
+```wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess -O build-aux/config.guess```
+```wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub -O build-aux/config.sub```
 
 - you want to do make install and then make check in that order
 
-Next, we need to git clone NuPPN from the NuGrid Gitlab. However, currently, Gitlab requires your token to access git clone from the terminal instead of using your password.
+3. Next, we need to git clone NuPPN from the NuGrid Gitlab. However, currently, Gitlab requires your token to access git clone from the terminal instead of using your password.
 
 a. Add ssh key to you gitlab account.
 b. Then in your terminal,
