@@ -124,7 +124,7 @@ ls *se.h5  > name_files.idx
  cp -r run_template run_test
  cd run_test 
 ```  
-   - Edit ppn_frame. Here are some inputs I made with the SE files (I tested the uploaded files, and they were corrupted.Please email me if you want to get input files).You can refer to the definitions in the documentation and change them later based on your work. ( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory.Also you want to check if NPDATA file exist in NuPPN/physics directory )
+   - Edit ppn_frame. Here are some inputs I made with the SE files (I tested the uploaded files, and they were corrupted. Please email me if you want to get input files).You can refer to the definitions in the documentation and change them later based on your work. ( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory. Also you want to check if NPDATA file exist in NuPPN/physics directory )
 ```
 &ppn_frame
 	iabuini = 11    ! initialisation
@@ -169,8 +169,14 @@ Now
  ```
 mpirun -np 16 ./mppnp.exe
  ```
-If everthing works out. You will see 3 output SE files. You are good to go to install mppnp in the HPC cluster to run them much effieciently. Ask your IT to install openMPI into your work space.The rest would be the same.Use any jobscripts to send job to your HPC.
-*A bit of a reminder to myself.I used this in Eddie HPC cluster, BLASLIB=-L/lib64/libopenblas then export OPENBLAS_NUM_THREADS=2 in the terminal to compile.This is because the setting limits the number processes that can be run by a user in Eddie cluster.
+
+Another issue with running old Fortran code with the latest architecture is that you might encounter problems such as mismatched arguments. Please add the mismatched argument in the flags. Edit in ARCH makefile debug,
+
+```-fallow-argument-mismatch```
+
+
+If everything works out, you will see 3 output SE files. You are good to go to install mppnp in the HPC cluster to run them more efficiently. Ask your IT to install openMPI into your workspace. The rest is the same. Use any job scripts to send jobs to your HPC.
+*A bit of a reminder to myself.I used this in Eddie HPC cluster, BLASLIB=-L/lib64/libopenblas then export OPENBLAS_NUM_THREADS=2 in the terminal to compile.This is because the setting limits the number of processes that can be run by a user in the Eddie cluster.
 ```
 qsub run_eddie.sh !This is for Eddie. Replace with your HPC command and job script
 ```
