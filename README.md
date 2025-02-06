@@ -1,7 +1,7 @@
 MPPNP-modular2 - INSTALLATION
 
 
-1.Lets install OpenMPI from website.Follow the instruction and test your mpi.I installed openmpi-5.0.3 version in my /opt directory.
+1. Let's install OpenMPI from the website.Follow the instructions and test your MPI.I installed the openmpi-5.0.3 version in my /opt directory.
 Installed tar file from https://docs.open-mpi.org/en/v5.0.x/installing-open-mpi/quickstart.html
 ```
 $mkdir /opt/mpi
@@ -34,7 +34,7 @@ $sudo make install
 Additional info from Joshua Issa: He encountered installation issues and found a solution. I've added it here in case others experience similar problems
 
 **hdf5 step issues**
- - this might have a problem with the configure step if the architecture of your machine is not recognized because the config.guess and config.sub files may be out of date (welcome to the future!). You'll have to update config.guess and config.sub, and these specific ones worked for me with aarch64
+ - This might cause a problem with the configure step if the architecture of your machine is not recognized because of the config.guess and config.sub files may be out of date (welcome to the future!). You'll have to update config.guess and config.sub, and these specific ones worked for me with aarch64
    
 ```$wget http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess -O bin/config.guess```
 
@@ -62,7 +62,7 @@ $git clone https://gitlab.ppmstar.org/NuGrid/nuppn.git --branch modular2 --singl
 ```
 
 Once you have NuPPN in your home directory, there are a few things that need to be modified.
-save this in your .bashrc to export your mpi.Replaced the path for your installed mpi
+save this in your .bashrc to export your mpi. Replaced the path for your installed mpi
 ```export PATH=$PATH:/opt/mpi/bin```
 
 Please edit the NuPPN/frames/mppnp/source/makefile. Add the last line in the configuration of the SE with your path to HDF5 like this. The reason is that we want SE to be built with the same hdf5 version as the mppnp. Conflicts would occur if you have several hdf5 versions in your global paths:
@@ -97,7 +97,7 @@ ls *se.h5  > name_files.idx
  cp -r run_template run_test
  cd run_test 
 ```  
-   - Edit ppn_frame. Here are some inputs I made with the SE files.You can refer to the definitions in the documentation and change them later based on your work. ( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory.Also you want to check if NPDATA file exist in NuPPN/physics directory )
+   - Edit ppn_frame. Here are some inputs I made with the SE files (I tested the uploaded files, and they were corrupted.Please email me if you want to get input files).You can refer to the definitions in the documentation and change them later based on your work. ( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory.Also you want to check if NPDATA file exist in NuPPN/physics directory )
 ```
 &ppn_frame
 	iabuini = 11    ! initialisation
@@ -118,8 +118,8 @@ ls *se.h5  > name_files.idx
 
         code_source = 'MES' ! which stellar code was used ?
         !datdir = '../USEEPP'
-        datdir = '/home/wan/NuPPN/frames/mppnp/USEEPP/HDF5_mm30'
-        prefix = 'M30.00000Z0.014'
+        datdir = '/home/wan/NuPPN/frames/mppnp/USEEPP/HDF5_mm30' #Path to the SE input files
+        prefix = 'M30.00000Z0.014' #This refers to index file created before "name_files.idx"
 
         msl = 5000   ! maximum number of spatial zones
         nrefmax = 23 ! refinement level
@@ -145,7 +145,7 @@ mpirun -np 16 ./mppnp.exe
 If everthing works out. You will see 3 output SE files. You are good to go to install mppnp in the HPC cluster to run them much effieciently. Ask your IT to install openMPI into your work space.The rest would be the same.Use any jobscripts to send job to your HPC.
 *A bit of a reminder to myself.I used this in Eddie HPC cluster, BLASLIB=-L/lib64/libopenblas then export OPENBLAS_NUM_THREADS=2 in the terminal to compile.This is because the setting limits the number processes that can be run by a user in Eddie cluster.
 ```
-qsub run_eddie.sh !This is for Eddie.Replace with your HPC command and job script
+qsub run_eddie.sh !This is for Eddie. Replace with your HPC command and job script
 ```
 
 ```
