@@ -86,6 +86,34 @@ $sudo make install
    The only thing I did differently was to assign
    ```BLASLIB = -lopenblas``` (you may need to sudo apt install blas first.Check where is you lopenblas is!else install blas, ```sudo apt install libopenblas-dev```)
 
+This is an example of my Make.local 
+```
+# identifier for this local
+
+LOCAL = shyne
+
+#Architecture
+
+ARCH = Linux_x86_64_gfortran
+
+# make sure PHYSICS and SOLVER are absolute path names, for example
+
+# specify the location of a full svn tree if you have one, like this:
+
+PPN = /home/wan18/NuPPN-modular2
+
+# you don't need to change the following two but you can
+PHYSICS = $(PPN)/physics
+SOLVER = $(PPN)/solver
+UTILS = $(PPN)/utils
+
+# where is mpi?
+MPIHOME = /home/opt/mpi
+
+USE_SUPERLU = YES
+BLASLIB = -lopenblas
+```
+
 5.Make sure you have input files ready for testing. You can download my SE files to try https://drive.google.com/drive/folders/1pBOQO-9fIPi4TcpX3J5_wxXuYb1T3mcq?usp=sharing . Save these files in the USEEPP directory.
 
 These input files can be obtained from archives or evolution codes like MESA or GENEVA. Simply use NuGrid SE tools to convert LOG history data into SE files. You'll need to manually create the index file on your own. Use the command below to generate the .index file:
