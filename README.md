@@ -73,10 +73,11 @@ mkdir $(SE_PATH)/SE/build
 cd $(SE_PATH)/SE; ./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5; sudo make; sudo make install
 ```
 Note: If you enc0ountered problem installing the NUSE by the default makefile (which I did), I suggest to install it manually from Nugrid-NuSE into your home directory.
-
-./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5
-sudo make
-sudo make install
+```
+$./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5
+$sudo make
+$sudo make install
+```
 Set the SE_PATH in the makefile to read your SE too.Personally, I would suggest to build in the SE separately.
 
 3. Prepare your Make.local following the tutorial from here https://www.youtube.com/watch?v=9MAWjzhP3_M 
