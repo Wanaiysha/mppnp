@@ -90,7 +90,7 @@ This is an example of my Make.local
 ```
 # identifier for this local
 
-LOCAL = shyne
+LOCAL = wan18
 
 #Architecture
 
@@ -98,9 +98,7 @@ ARCH = Linux_x86_64_gfortran
 
 # make sure PHYSICS and SOLVER are absolute path names, for example
 
-# specify the location of a full svn tree if you have one, like this:
-
-PPN = /home/wan18/NuPPN-modular2
+PPN = /home/wan18/nuppn
 
 # you don't need to change the following two but you can
 PHYSICS = $(PPN)/physics
@@ -108,7 +106,7 @@ SOLVER = $(PPN)/solver
 UTILS = $(PPN)/utils
 
 # where is mpi?
-MPIHOME = /home/opt/mpi
+MPIHOME = /home/wan18/opt/mpi
 
 USE_SUPERLU = YES
 BLASLIB = -lopenblas
