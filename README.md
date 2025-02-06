@@ -68,12 +68,13 @@ save this in your .bashrc to export your mpi.Replaced the path for your installe
 Please edit the NuPPN/frames/mppnp/source/makefile. Add the last line in the configuration of the SE with your path to HDF5 like this. The reason is, we want SE is build with the same hdf5 version with the mppnp. Conflicts would occur if you have several hdf5 versions in your global paths:
 ```$(SE_PATH)/build/lib/libse.so:
 rm -rf $(SE_PATH)
-git clone git clone https://github.com/NuGrid/NuSE.git $(SE_PATH)
+git clone https://github.com/NuGrid/NuSE.git $(SE_PATH)
 mkdir $(SE_PATH)/SE/build
 cd $(SE_PATH)/SE; ./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5; sudo make; sudo make install
 ```
 Note: If you enc0ountered problem installing the NUSE by the default makefile (which I did), I suggest to install it manually from Nugrid-NuSE into your home directory.
 ```
+$git clone https://github.com/NuGrid/NuSE.git
 $./configure --prefix=$(SE_PATH)/SE/build F77=gfortran --with-hdf5=/opt/hdf5
 $sudo make
 $sudo make install
