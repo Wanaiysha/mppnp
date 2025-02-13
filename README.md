@@ -1,7 +1,7 @@
 MPPNP-modular2 - INSTALLATION
 
 
-1. Let's install OpenMPI from the website.Follow the instructions and test your MPI.I installed the openmpi-5.0.3 version in my /opt directory.
+1. Let's install OpenMPI from the website. Follow the instructions and test your MPI. I installed the openmpi-5.0.3 version in my /opt directory.
 Installed tar file from https://docs.open-mpi.org/en/v5.0.x/installing-open-mpi/quickstart.html
 ```
 $mkdir /opt/mpi
@@ -53,7 +53,7 @@ se step issues
 - you want to do make install and then make check in that order
 
 
-3.Next, we need to git clone NuPPN from the NuGrid Gitlab. However, currently, Gitlab requires your token to access git clone from the terminal instead of using your password.
+3. Next, we need to git clone NuPPN from the NuGrid Gitlab. However, currently, Gitlab requires your token to access git clone from the terminal instead of using your password.
 
 a. Add ssh key to you gitlab account.
 b. Then in your terminal,
@@ -84,7 +84,7 @@ $sudo make install
 4. Prepare your Make.local following the tutorial from here https://www.youtube.com/watch?v=9MAWjzhP3_M 
 
    The only thing I did differently was to assign
-   ```BLASLIB = -lopenblas``` (you may need to sudo apt install blas first.Check where is you lopenblas is!else install blas, ```sudo apt install libopenblas-dev```)
+   ```BLASLIB = -lopenblas``` (you may need to sudo apt install blas first. Check where is your lopenblas is!else install blas, ```sudo apt install libopenblas-dev```)
 
 This is an example of my Make.local 
 ```
@@ -112,9 +112,9 @@ USE_SUPERLU = YES
 BLASLIB = -lopenblas
 ```
 
-5.Make sure you have input files ready for testing. You can download my SE files to try https://drive.google.com/drive/folders/1pBOQO-9fIPi4TcpX3J5_wxXuYb1T3mcq?usp=sharing . Save these files in the USEEPP directory.
+5.Make sure you have input files ready for testing. You can download my SE files to try https://drive.google.com/drive/folders/1pBOQO-9fIPi4TcpX3J5_wxXuYb1T3mcq?usp=sharing . Save these files in the USEEPP directory.(Update: the link is unusable.Email me if you need the input files)
 
-These input files can be obtained from archives or evolution codes like MESA or GENEVA. Simply use NuGrid SE tools to convert LOG history data into SE files. You'll need to manually create the index file on your own. Use the command below to generate the .index file:
+These input files can be obtained from archives or evolution codes like MESA or GENEVA. Simply use NuGrid SE tools to generate the SE files. However form the SE MESA files, you'll have to manually create the index file on your own. Use the command below to generate the .index file in the HDF5 directory(MESA).
 ```
 ls *se.h5  > name_files.idx
 ```
@@ -124,7 +124,7 @@ ls *se.h5  > name_files.idx
  cp -r run_template run_test
  cd run_test 
 ```  
-   - Edit ppn_frame. Here are some inputs I made with the SE files (I tested the uploaded files, and they were corrupted. Please email me if you want to get input files).You can refer to the definitions in the documentation and change them later based on your work. ( Make sure you have have ppn_physics,ppn_solver,ppn_frames,istopedatabase in the run directory. Also you want to check if NPDATA file exist in NuPPN/physics directory )
+   - Edit ppn_frame. Here are some inputs I made with the SE files (I tested the uploaded files, and they were corrupted. Please email me if you want to get input files). You can refer to the definitions in the documentation and change them later based on your work. ( Make sure you have ppn_physics,ppn_solver,ppn_frames, and isotopedatabase.txt in the run directory. Also, you want to check ifthe  NPDATA file exists in NuPPN/physics directory )
 ```
 &ppn_frame
 	iabuini = 11    ! initialisation
@@ -162,9 +162,9 @@ make clean
 make blasclean
 make
 ```
-This will create the mppnp.exe file. If you encounter other errors, particularly the "Error: Missing actual argument for argument time...", it's likely due to two lines in mppnp.F90 (line 724 and 1610). For now, I've only commented out these lines as I haven't yet figured out how to solve them yet. Another problem can be due to openblas was not set properly.So check your make debug. I did get help from Marco Pignatari a lot!
+This will create the mppnp.exe file. If you encounter other errors, particularly the "Error: Missing actual argument for argument time...", it's likely due to two lines in mppnp.F90 (line 724 and 1610). For now, I've only commented out these lines as I haven't yet figured out how to solve them. Another problem can be due to openblas was not set properly. So check your make debug. I did get help from Marco Pignatari a lot!
 
-**UPDATE** It seems that mppnp.F90 called a subroutine from solver/solver.F90 and decay.F90 which doesnt match with the 'time' argument. So I replaced the solver.f90 using the solver.f90 file from **NuPPN-modify_D_term** (From NuPPN -branch) which almost identical except the 'time' dependencies, and finally the code works. The replacement was to remove the subroutine 'equilibrium check' in the solver module. I shared the replacement files here too. Hoewever keep in mind, this will make the PPN module encounters error.
+**UPDATE** It seems that mppnp.F90 called a subroutine from solver/solver.F90 and decay.F90 which doesnt match with the 'time' argument. So I replaced the solver.f90 using the solver.f90 file from **NuPPN-modify_D_term** (From NuPPN -branch) which is almost identical except the 'time' dependencies, and finally the code works. The replacement was to remove the subroutine 'equilibrium check' in the solver module. I shared the replacement files here too. However keep in mind, this will make the PPN module encounter errors. I'm guessing the new routine, 'equilibrium check' is implemented for PPN and isn't ready for MPPNP yet.
 Now 
  ```
 mpirun -np 16 ./mppnp.exe
